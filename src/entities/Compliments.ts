@@ -3,9 +3,7 @@ import {
   PrimaryColumn,
   Column,
   CreateDateColumn,
-  TableForeignKey,
   JoinColumn,
-  ManyToMany,
   ManyToOne,
 } from "typeorm";
 
@@ -22,24 +20,24 @@ class Compliments {
   @Column()
   user_sender: string;
 
-  @JoinColumn({name: "user_sender"})
+  @JoinColumn({ name: "user_sender" })
   @ManyToOne(() => User)
-  userSender: User
+  userSender: User;
 
   // Segundo Relacionamento
   @Column()
   user_receiver: string;
 
-  @JoinColumn({name: "user_receiver"})
+  @JoinColumn({ name: "user_receiver" })
   @ManyToOne(() => User)
-  userReceiver: User
+  userReceiver: User;
 
   // Terceiro Relacionamento
   @Column()
   tag_id: string;
-  
-  @JoinColumn({name: 'tag_id'})
-  @ManyToMany(() => Tag)
+
+  @JoinColumn({ name: "tag_id" })
+  @ManyToOne(() => Tag)
   tag: Tag;
 
   @Column()
@@ -47,7 +45,7 @@ class Compliments {
 
   @CreateDateColumn()
   created_at: Date;
-  
+
   constructor() {
     if (!this.id) {
       this.id = uuid();

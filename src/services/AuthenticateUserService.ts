@@ -1,4 +1,4 @@
-import { getCustomRepository } from "typeorm";
+  import { getCustomRepository } from "typeorm";
 import { UserRepositories } from "../repositories/UserRepositorie";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
