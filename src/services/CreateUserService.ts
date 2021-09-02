@@ -11,7 +11,7 @@ interface UserRequest {
 
 // classe para a criação de usuario
 class CreateUserService {
-  async execute({ name, email, admin, password }: UserRequest) {
+  async execute({ name, email, admin = false, password }: UserRequest) {
     if (!email || !password) throw new Error("Email or Password incorrect");
 
     const usersRepository = getCustomRepository(UserRepositories);

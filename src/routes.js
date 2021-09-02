@@ -9,6 +9,7 @@ const {
 } = require("./controllers/CreateComplimentController");
 
 const { ensureAdmin } = require("./middlewares/ensureAdmin");
+const { ensureAuthenticated } = require("./middlewares/ensureAuthenticated");
 
 const router = Router();
 
@@ -18,8 +19,8 @@ const createComplimentController = new CreateComplimentController();
 const authenticateUserController = new AuthenticateUserController();
 
 router.post("/users", createUserController.handle);
-router.post("/tags", ensureAdmin, createTagController.handle);
-router.post("/compliments", ensureAdmin, createComplimentController.handle);
+router.post("/tags", ensureAuthenticated, ensureAdmin,  createTagController.handle);
+router.post("/compliments", ensureAuthenticated, ensureAdmin, createComplimentController.handle);
 router.post("/login", authenticateUserController.handle);
 
 module.exports = { router };
