@@ -13,6 +13,9 @@ const {
 const {
   ListUserSendComplimentsController,
 } = require("./controllers/ListUserSendComplimentsController");
+const {
+  ListTagsController,
+} = require("./controllers/ListTagsController");
 
 const { ensureAdmin } = require("./middlewares/ensureAdmin");
 const { ensureAuthenticated } = require("./middlewares/ensureAuthenticated");
@@ -23,8 +26,9 @@ const createUserController = new CreateUserController();
 const createTagController = new CreateTagController();
 const createComplimentController = new CreateComplimentController();
 const authenticateUserController = new AuthenticateUserController();
-const listUserReceiveCompliments = new ListUserReceiveComplimentsController();
-const listUserSendCompliments = new ListUserSendComplimentsController();
+const listUserReceiveComplimentsController = new ListUserReceiveComplimentsController();
+const listUserSendComplimentsController = new ListUserSendComplimentsController();
+const listTagsController = new ListTagsController();
 
 router.post("/users", createUserController.handle);
 router.post("/login", authenticateUserController.handle);
@@ -45,13 +49,19 @@ router.post(
 router.get(
   "/users/compliment/receiver",
   ensureAuthenticated,
-  listUserReceiveCompliments.handle
+  listUserReceiveComplimentsController.handle
 );
 
 router.get(
   "/users/compliment/send",
   ensureAuthenticated,
-  listUserSendCompliments.handle
+  listUserSendComplimentsController.handle
+);
+
+router.get(
+  "/tags",
+  ensureAuthenticated,
+  listTagsController.handle
 );
 
 module.exports = { router };
