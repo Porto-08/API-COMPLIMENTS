@@ -16,6 +16,7 @@ const {
 const { ListTagsController } = require("./controllers/ListTagsController");
 const { ListUsersController } = require("./controllers/ListUsersController");
 const { DeleteUserController } = require("./controllers/DeleteUserController");
+const { EditUserController } = require("./controllers/EditUserController");
 
 const { ensureAdmin } = require("./middlewares/ensureAdmin");
 const { ensureAuthenticated } = require("./middlewares/ensureAuthenticated");
@@ -33,6 +34,7 @@ const listUserSendComplimentsController =
 const listTagsController = new ListTagsController();
 const listUsersController = new ListUsersController();
 const deleteUserController = new DeleteUserController();
+const editUserController = new EditUserController();
 
 
 
@@ -56,6 +58,7 @@ router.post("/login", authenticateUserController.handle);
 
 router.get("/users", ensureAuthenticated, listUsersController.handle);
 router.post("/users", createUserController.handle);
+router.put("/users", ensureAuthenticated, editUserController.handle);
 router.delete('/users', ensureAuthenticated, deleteUserController.handle);
 
 router.get(
