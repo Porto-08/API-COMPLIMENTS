@@ -23,7 +23,7 @@ Projeto realizado junto a NLW Together para aprendizagem de Typescript e prátic
   
 # Iniciar
   - npm dev
-  - yarn start
+  - yarn dev
   
 ## Obs
 - Para vizualização dos dados no no banco foi utilizado o software Beekeeper Studio. 
