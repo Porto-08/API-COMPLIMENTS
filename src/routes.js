@@ -13,12 +13,9 @@ const {
 const {
   ListUserSendComplimentsController,
 } = require("./controllers/ListUserSendComplimentsController");
-const {
-  ListTagsController,
-} = require("./controllers/ListTagsController");
-const {
-  ListUsersController
-} = require("./controllers/ListUsersController");
+const { ListTagsController } = require("./controllers/ListTagsController");
+const { ListUsersController } = require("./controllers/ListUsersController");
+const { DeleteUserController } = require("./controllers/DeleteUserController");
 
 const { ensureAdmin } = require("./middlewares/ensureAdmin");
 const { ensureAuthenticated } = require("./middlewares/ensureAuthenticated");
@@ -29,21 +26,24 @@ const createUserController = new CreateUserController();
 const createTagController = new CreateTagController();
 const createComplimentController = new CreateComplimentController();
 const authenticateUserController = new AuthenticateUserController();
-const listUserReceiveComplimentsController = new ListUserReceiveComplimentsController();
-const listUserSendComplimentsController = new ListUserSendComplimentsController();
+const listUserReceiveComplimentsController =
+  new ListUserReceiveComplimentsController();
+const listUserSendComplimentsController =
+  new ListUserSendComplimentsController();
 const listTagsController = new ListTagsController();
 const listUsersController = new ListUsersController();
+const deleteUserController = new DeleteUserController();
 
-// posts
-router.post("/users", createUserController.handle);
-router.post("/login", authenticateUserController.handle);
 
+
+router.get("/tags", ensureAuthenticated, listTagsController.handle);
 router.post(
   "/tags",
   ensureAuthenticated,
   ensureAdmin,
   createTagController.handle
 );
+
 router.post(
   "/compliments",
   ensureAuthenticated,
@@ -52,8 +52,12 @@ router.post(
 );
 
 
+router.post("/login", authenticateUserController.handle);
 
-// gets
+router.get("/users", ensureAuthenticated, listUsersController.handle);
+router.post("/users", createUserController.handle);
+router.delete('/users', ensureAuthenticated, deleteUserController.handle);
+
 router.get(
   "/users/compliment/receiver",
   ensureAuthenticated,
@@ -66,12 +70,5 @@ router.get(
   listUserSendComplimentsController.handle
 );
 
-router.get(
-  "/tags",
-  ensureAuthenticated,
-  listTagsController.handle
-);
-
-router.get('/users', ensureAuthenticated, listUsersController.handle)
 
 module.exports = { router };
