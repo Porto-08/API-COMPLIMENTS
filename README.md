@@ -1,13 +1,13 @@
 # API-COMPLIMENTS
 Projeto realizado junto a NLW Together para aprendizagem de Typescript e prática de NodeJs.  
 
- ## Features: 
+ # Features: 
  - cadastrar usuarios;
  - cadastrar tags;
  - cadastrar comentarios;  
  - login com JWT (Json Web Token). 
  
-# Dependências 
+## Dependências 
   - typescript
   - express
   - sqlite3
@@ -17,14 +17,14 @@ Projeto realizado junto a NLW Together para aprendizagem de Typescript e prátic
   - typeorm
   - uuid
   
-# Instalação
+## Instalação
   - npm install | npm i
   - yarn 
   
-# Iniciar
+## Iniciar
   - npm dev
   - yarn dev
   
 ## Obs
-- Para vizualização dos dados no no banco foi utilizado o software Beekeeper Studio. 
+- Para vizualização dos dados no banco foi utilizado o software Beekeeper Studio. 
 
