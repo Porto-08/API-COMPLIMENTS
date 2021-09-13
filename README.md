@@ -3,9 +3,15 @@ Projeto realizado junto a NLW Together para aprendizagem de Typescript e prátic
 
  # Features: 
  - cadastrar usuarios;
+ - login de usuário; 
+ - vizualizar usuarios;
+ - editar usuarios;
+ - deletar usuarios;
  - cadastrar tags;
+ - vizualizar tags;
  - cadastrar comentarios;  
- - login com JWT (Json Web Token). 
+ - vizualizar comentarios de um usuário.  
+ - vizualizar comentarios para um usuário.  
  
 ## Dependências 
   - typescript
